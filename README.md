@@ -33,7 +33,7 @@ O objetivo da API é fazer uso das funcionalidades do Envers, que permite uma or
 - [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
 - [Github](https://gitforwindows.org/) (Opcional)
 - Possuir 4GB RAM para o docker
-- 
+
 ### Executando:
 
 1. Clonar o projeto
