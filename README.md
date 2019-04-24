@@ -44,8 +44,8 @@ O objetivo da API é fazer uso das funcionalidades do Envers, que permite uma or
 3. Executar a classe `DemoApplication`.
 
 ### Testando a Demo:
-1. Fazendo uso do `Postman` 
-1.1 Insira dados no banco.
+1. Fazendo uso do `Postman`.
+ .1 Insira dados no banco.
 POST http://localhost:8080/api/people/history/person
 Json
 ```
@@ -56,7 +56,7 @@ Json
 }
 ```
 
-1.2 Atualize os dados cadastrados (ou insira mais 1)
+ .2 Atualize os dados cadastrados (ou insira mais 1)
 PUT http://localhost:8080/api/people/history/person/{Id do cadastro}
 JSon
 ```
