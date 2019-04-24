@@ -18,12 +18,12 @@ O Hibernate Envers oferece a organização do histórico das versões dos dados 
 
 ### Requisitos minimos
 É necessário instalar as seguintes ferramentas para acompanhar o projeto.
-* Maven 3.x.x
-* Java 8 ou superior
-* [Docker] (https://www.docker.com/products/docker-desktop/)
-* [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
-* [Git Bash](https://git-scm.com/)
-* [InteliJ] ou IDE de preferência
+- Maven 3.x.x
+- Java 8 ou superior
+- [Docker] (https://www.docker.com/products/docker-desktop/)
+- [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
+- [Git Bash](https://git-scm.com/)
+- [InteliJ](https://www.jetbrains.com/idea/) ou IDE de preferência
 - [Github](https://gitforwindows.org/) (Opcional)
 - [Poistman](https://www.getpostman.com/downloads/)
 - Possuir 4GB RAM para o docker
@@ -83,8 +83,8 @@ GET: http://localhost:8080/api/people/history/person/revision/{ID}
 GET: http://localhost:8080/api/people/history/revision/{REV}
 + Mostra alterações feitas em uma revision especifica
 
-. 4
-DEL: http://localhost:8080/api/people/history/person/{id}
+.4 Remover dados do banco 
+DEL: http://localhost:8080/api/people/history/person/{id}  
 + Deleta cadastro do banco de dados
 
 ### Passo a passo de desenvolvimento:
