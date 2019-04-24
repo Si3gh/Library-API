@@ -1,5 +1,5 @@
 ## Hibernate Envers
-# Glossário
+### Glossário
 * Hibernate é um framework para o mapeamento objeto-relacional. 
 * Envers é um módulo do Hibernate que permite realizar auditoria das tabelas mapeadas de um banco de dados.
 
