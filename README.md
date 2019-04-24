@@ -7,12 +7,12 @@ O Hibernate envers é um framework que facilita o mapeamento dos atributos entre
 
 O Hibernate Envers oferece a organização do histórico das versões dos dados gerenciados pela aplicação, através das entidades mapeadas para a persistência JPA para auditar as modificações ocorridas em um dado registro. Dessa forma, com sua utilização, uma aplicação é capaz de gerir todas as modificações realizadas no seu banco de dados de forma fácil e não intrusiva.
 
-Documentação:
+### Documentação:
 * https://hibernate.org/orm/envers/
 * https://docs.jboss.org/hibernate/orm/4.3/devguide/en-US/html/ch15.html
 * https://docs.spring.io/spring-data/envers/docs/2.1.6.RELEASE/reference/html/
 
-Leitura auxiliar:
+### Leitura auxiliar:
 * https://thoughts-on-java.org/hibernate-envers-getting-started/
 * https://thoughts-on-java.org/hibernate-envers-query-data-audit-log/
 
@@ -101,7 +101,7 @@ Utilizando o site: [Spring Initializr](https://start.spring.io/) com as dependê
 ```yml
 spring:
   datasource:
-    url: jdbc:postgresql://IP_MAQUINA_:5432/postgres_db
+    url: jdbc:postgresql://192.168.99.100:5432/postgres_db
     username: postgres-user
     password: 1234
   jpa:
@@ -120,7 +120,6 @@ Para que os Envers criem as tabelas de auditoria históricas necessárias e arma
  Considerando que temos uma entidade Person, ao marcá-la com a anotação Audited, o Hibernate irá gerar as tabelas no banco
  Person; Person_AUD; REVINFO
 ```    
-
 @Entity
 @Audited
 @Table(name = "person")
