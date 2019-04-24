@@ -83,7 +83,7 @@ GET http://localhost:8080/api/people/history/revision/{REV}
 + Mostra alterações feitas em uma revision especifica
 
 ### Passo a passo de desenvolvimento:
-#### **1-Vamos criar um novo projeto**
+#### **Vamos criar um novo projeto**
 
 Utilizando o site: [Spring Initializr](https://start.spring.io/) com as dependências: **JPA,WEB,e o banco de dados(PostgreSQL)**.
 
