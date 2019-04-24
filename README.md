@@ -1,11 +1,19 @@
 ## Hibernate Envers
-### Glossário
+## Glossário
 * Hibernate é um framework para o mapeamento objeto-relacional. 
 * Envers é um módulo do Hibernate que permite realizar auditoria das tabelas mapeadas de um banco de dados.
 
 O Hibernate envers é um framework que facilita o mapeamento dos atributos entre uma base tradicional de dados relacionais e o modelo objeto de uma aplicação, mediante o uso de arquivos (XML) ou anotações Java (veja Annotation (java)). 
 
 O Hibernate Envers oferece a organização do histórico das versões dos dados gerenciados pela aplicação, através das entidades mapeadas para a persistência JPA para auditar as modificações ocorridas em um dado registro. Dessa forma, com sua utilização, uma aplicação é capaz de gerir todas as modificações realizadas no seu banco de dados de forma fácil e não intrusiva.
+
+## Revision
+
+Muito parecido com o controle de versão do código-fonte, o Envers usa um conceito de revisões.
+
+Uma revisão identifica uma coleção de alterações em entidades e suas associações para todos os atributos auditados que ocorreram dentro do limite de uma transação. Essas revisões são globais e numéricas.
+
+A API AuditReader fornece várias maneiras de consultar entidades em revisões específicas e recuperar uma visão parcial da aparência dessa entidade nessa revisão específica. Ele também permite que você tenha acesso a listas de revisões associadas a um tipo de entidade ou restritas por um período. A API também fornece uma maneira de obter os metadados de revisão para que você possa saber quando uma alteração ocorreu, além de quaisquer atributos personalizados adicionais que você possa ter armazenado na entidade de revisão com base em suas necessidades de implementação.
 
 ### Documentação:
 * https://hibernate.org/orm/envers/
@@ -145,10 +153,4 @@ public class Person {
     private String comments;
 }
 ```
-Revision
 
-Muito parecido com o controle de versão do código-fonte, o Envers usa um conceito de revisões.
-
-Uma revisão identifica uma coleção de alterações em entidades e suas associações para todos os atributos auditados que ocorreram dentro do limite de uma transação. Essas revisões são globais e numéricas.
-
-A API AuditReader fornece várias maneiras de consultar entidades em revisões específicas e recuperar uma visão parcial da aparência dessa entidade nessa revisão específica. Ele também permite que você tenha acesso a listas de revisões associadas a um tipo de entidade ou restritas por um período. A API também fornece uma maneira de obter os metadados de revisão para que você possa saber quando uma alteração ocorreu, além de quaisquer atributos personalizados adicionais que você possa ter armazenado na entidade de revisão com base em suas necessidades de implementação.
