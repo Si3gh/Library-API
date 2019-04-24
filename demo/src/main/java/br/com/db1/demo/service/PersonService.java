@@ -1,7 +1,7 @@
 package br.com.db1.demo.service;
 
+import br.com.db1.demo.dto.PersonDTO;
 import br.com.db1.demo.model.Person;
-
 import br.com.db1.demo.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +24,17 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Optional<Person> getPerson(Long id) {
-        return personRepository.findById(id);
+    public Person getPerson(Long id) {
+        return personRepository.findById(id).orElseThrow(() -> new RuntimeException("Person not found"));
     }
 
+    public Person persistPerson(Person person) {
+        return personRepository.save(person);
+    }
 
+    public void deletePerson(Person person) {
+        personRepository.delete(person);
+    }
 }
+
+

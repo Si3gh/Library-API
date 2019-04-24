@@ -1,18 +1,6 @@
-package br.com.db1.demo.model;
+package br.com.db1.demo.dto;
 
-import org.hibernate.envers.Audited;
-
-import javax.persistence.*;
-import java.io.Serializable;
-
-
-@Entity
-@Audited
-@Table(name = "person")
-public class Person {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+public class PersonDTO {
 
     private String name;
 
@@ -20,29 +8,6 @@ public class Person {
 
     private String comments;
 
-
-
-    public Person() {
-    }
-
-    public Person(String name) {
-        this.name = name;
-    }
-
-    public Person(String name, String surname,String comments) {
-        this.name = name;
-        this.surname = surname;
-        this.comments = comments;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -73,7 +38,6 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", comments='" + comments + '\'' +
