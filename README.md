@@ -46,7 +46,7 @@ O objetivo da API é fazer uso das funcionalidades do Envers, que permite uma or
 ### Testando a Demo:
 1. Fazendo uso do `Postman`.
  .1 Insira dados no banco.
-POST http://localhost:8080/api/people/history/person
+POST: http://localhost:8080/api/people/history/person
 Json
 ```
 {
@@ -56,8 +56,8 @@ Json
 }
 ```
 
- .2 Atualize os dados cadastrados (ou insira mais 1)
-PUT http://localhost:8080/api/people/history/person/{Id do cadastro}
+ .2 Atualize os dados cadastrados (ou insira mais 1).
+PUT: http://localhost:8080/api/people/history/person/{Id do cadastro}
 JSon
 ```
 {
@@ -67,20 +67,25 @@ JSon
 }
 ```
 
-2. Faça uma busca do histórico de operações realizadas no banco
-GET http://localhost:8080/api/people/history/record 
+.3 Faça uma busca do histórico de operações realizadas no banco
+
+GET: http://localhost:8080/api/people/history/record 
 + Mostra todas as pessoas cadastradas no banco.
 
-GET http://localhost:8080/api/people/history/{Id da pessoa cadastrada}
+GET: http://localhost:8080/api/people/history/{Id da pessoa cadastrada}
 + Mostra dados de cadastro específico.
 
 Auditoria
 
-GET http://localhost:8080/api/people/history/person/revision/{ID}
+GET: http://localhost:8080/api/people/history/person/revision/{ID}
 + Mostra histórico de alterações feitas em um cadastro especifico.
 
-GET http://localhost:8080/api/people/history/revision/{REV}
+GET: http://localhost:8080/api/people/history/revision/{REV}
 + Mostra alterações feitas em uma revision especifica
+
+. 4
+DEL: http://localhost:8080/api/people/history/person/{id}
++ Deleta cadastro do banco de dados
 
 ### Passo a passo de desenvolvimento:
 #### **Vamos criar um novo projeto**
