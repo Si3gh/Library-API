@@ -44,10 +44,12 @@ O objetivo da API é fazer uso das funcionalidades do Envers, que permite uma or
 3. Executar a classe `DemoApplication`.
 
 ### Testando a Demo:
-1. Fazendo uso do `Postman`.
- .1 Insira dados no banco.
-POST: http://localhost:8080/api/people/history/person
-Json
+### Fazendo uso do `Postman`.
+.1 Insira dados no banco.
+ 
+ ```	POST: http://localhost:8080/api/people/history/person ```
+ 
+JSon
 ```
 {
 	"name":"Joao"
@@ -57,7 +59,8 @@ Json
 ```
 
  .2 Atualize os dados cadastrados (ou insira mais 1).
-PUT: http://localhost:8080/api/people/history/person/{Id do cadastro}
+```	PUT: http://localhost:8080/api/people/history/person/{Id} ```
+
 JSon
 ```
 {
@@ -69,22 +72,23 @@ JSon
 
 .3 Faça uma busca do histórico de operações realizadas no banco
 
-GET: http://localhost:8080/api/people/history/record 
+	GET: http://localhost:8080/api/people/history/record 
 + Mostra todas as pessoas cadastradas no banco.
 
-GET: http://localhost:8080/api/people/history/{Id da pessoa cadastrada}
+```	GET: http://localhost:8080/api/people/history/{Id}```
 + Mostra dados de cadastro específico.
 
-Auditoria
+#### Auditoria
 
-GET: http://localhost:8080/api/people/history/person/revision/{ID}
+	GET: http://localhost:8080/api/people/history/person/revision/{ID}
 + Mostra histórico de alterações feitas em um cadastro especifico.
 
-GET: http://localhost:8080/api/people/history/revision/{REV}
+        GET: http://localhost:8080/api/people/history/revision/{REV}
 + Mostra alterações feitas em uma revision especifica
 
-.4 Remover dados do banco 
-DEL: http://localhost:8080/api/people/history/person/{id}  
+.4 Remover dados do banco. 
+
+	DEL: http://localhost:8080/api/people/history/person/{id}  
 + Deleta cadastro do banco de dados
 
 ### Passo a passo de desenvolvimento:
