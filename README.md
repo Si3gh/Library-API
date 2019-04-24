@@ -1,8 +1,8 @@
-# DB1
 ## Hibernate Envers
 # Glossário
-Hibernate é um framework para o mapeamento objeto-relacional. 
-Envers é um módulo do Hibernate que permite realizar auditoria das tabelas mapeadas de um banco de dados.
+* Hibernate é um framework para o mapeamento objeto-relacional. 
+* Envers é um módulo do Hibernate que permite realizar auditoria das tabelas mapeadas de um banco de dados.
+
 O Hibernate envers é um framework que facilita o mapeamento dos atributos entre uma base tradicional de dados relacionais e o modelo objeto de uma aplicação, mediante o uso de arquivos (XML) ou anotações Java (veja Annotation (java)). 
 
 O Hibernate Envers oferece a organização do histórico das versões dos dados gerenciados pela aplicação, através das entidades mapeadas para a persistência JPA para auditar as modificações ocorridas em um dado registro. Dessa forma, com sua utilização, uma aplicação é capaz de gerir todas as modificações realizadas no seu banco de dados de forma fácil e não intrusiva.
@@ -99,7 +99,6 @@ Utilizando o site: [Spring Initializr](https://start.spring.io/) com as dependê
 
 2. Configurar em `/src/main/resources/application.yml` as propriedades do banco de dados.
 ```yml
-
 spring:
   datasource:
     url: jdbc:postgresql://IP_MAQUINA_:5432/postgres_db
@@ -109,7 +108,6 @@ spring:
     hibernate.ddl-auto: update
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
-	
 ```
 Para que os Envers criem as tabelas de auditoria históricas necessárias e armazenem as alterações feitas nas entidades auditadas e suas associações, o que se segue é tudo o que é necessário para começar:
 
