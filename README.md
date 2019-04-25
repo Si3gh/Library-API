@@ -1,5 +1,5 @@
 ## Hibernate Envers
-## Glossário
+### Glossário
 * Hibernate é um framework para o mapeamento objeto-relacional. 
 * Envers é um módulo do Hibernate que permite realizar auditoria das tabelas mapeadas de um banco de dados.
 
@@ -19,6 +19,7 @@ A API AuditReader fornece várias maneiras de consultar entidades em revisões e
 * https://hibernate.org/orm/envers/
 * https://docs.jboss.org/hibernate/orm/4.3/devguide/en-US/html/ch15.html
 * https://docs.spring.io/spring-data/envers/docs/2.1.6.RELEASE/reference/html/
+* https://docs.oracle.com/javaee/7/tutorial/persistence-intro.htm#BNBPZ
 
 ### Leitura auxiliar:
 * https://thoughts-on-java.org/hibernate-envers-getting-started/
@@ -28,12 +29,12 @@ A API AuditReader fornece várias maneiras de consultar entidades em revisões e
 É necessário instalar as seguintes ferramentas para acompanhar o projeto.
 - Maven 3.x.x
 - Java 8 ou superior
-- [Docker] (https://www.docker.com/products/docker-desktop/)
+- [Docker](https://www.docker.com/products/docker-desktop/)
 - [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
 - [Git Bash](https://git-scm.com/)
-- [InteliJ](https://www.jetbrains.com/idea/) ou IDE de preferência
+- [InteliJ](https://www.jetbrains.com/idea/)
 - [Github](https://gitforwindows.org/) (Opcional)
-- [Poistman](https://www.getpostman.com/downloads/)
+- [Postman](https://www.getpostman.com/downloads/)
 - Possuir 4GB RAM para o docker
 
 
@@ -49,16 +50,19 @@ O objetivo da API é fazer uso das funcionalidades do Envers, que permite uma or
     `-e POSTGRES_USER=postgres-user \`  
     `-e POSTGRES_DB=postgres_db \`  
     `-d postgres:latest`  
-3. Executar a classe `DemoApplication`.
+3. Executar a classe `Application`.
 
 ### Testando a Demo:
  Fazendo uso do `Postman`.
  
 .1 Insira dados no banco.
- 
- ```	POST: http://localhost:8080/api/people/history/person ```
+
+
+ ```	POST: http://localhost:8080/api/people ```
  
 JSon
+
+
 ```
 {
 	"name":"Joao"
@@ -67,8 +71,9 @@ JSon
 }
 ```
 
- .2 Atualize os dados cadastrados (ou insira mais 1).
-```	PUT: http://localhost:8080/api/people/history/person/{Id} ```
+ .2 Atualize os dados cadastrados.
+ 
+```	PUT: http://localhost:8080/api/people/{Id} ```
 
 JSon
 ```
@@ -81,24 +86,31 @@ JSon
 
 .3 Faça uma busca do histórico de operações realizadas no banco
 
-	GET: http://localhost:8080/api/people/history/record 
 + Mostra todas as pessoas cadastradas no banco.
 
-```	GET: http://localhost:8080/api/people/history/{Id}```
+```	GET: http://localhost:8080/api/people/ ```
+
+
 + Mostra dados de cadastro específico.
 
-#### Auditoria
+```	GET: http://localhost:8080/api/people/{Id}```
 
-	GET: http://localhost:8080/api/people/history/person/revision/{ID}
+
+#### Auditoria
 + Mostra histórico de alterações feitas em um cadastro especifico.
 
-        GET: http://localhost:8080/api/people/history/revision/{REV}
+```	GET: http://localhost:8080/api/people/history/{ID}```
+
 + Mostra alterações feitas em uma revision especifica
 
-.4 Remover dados do banco. 
+```     GET: http://localhost:8080/api/people/history/revision/{REV}```
 
-	DEL: http://localhost:8080/api/people/history/person/{id}  
+
+.4 Remover dados do banco. 
 + Deleta cadastro do banco de dados
+
+```	DEL: http://localhost:8080/api/people/person/{id}  ```
+
 
 ### Passo a passo de desenvolvimento:
 #### **Vamos criar um novo projeto**
@@ -154,3 +166,59 @@ public class Person {
 }
 ```
 
+Para buscar/Modificar/Deletar (entre outros) entidades para auditoria de dados, utiliza-se `AuditQuery(INTERFACE)`, `Audit Reader` |`AuditReaderFactory(CLASS)`, e o `EntityManager(CLASS)`.
+
+
+* Uma consulta de auditoria(`AuditQuery`) é quando um determinado conjunto de dados é puxado para auditoria.
+```
+public interface AuditQuery {
+    List getResultList() throws AuditException;
+    
+    AuditQuery add(AuditCriterion var1);
+
+    AuditQuery addProjection(AuditProjection var1);
+
+    AuditQuery addOrder(AuditOrder var1);
+
+    AuditQuery setMaxResults(int var1);
+
+    {.....}
+```
+
+* `EntityManager` é a classe responsável por gerenciar o ciclo de vida das entidades. (Capaz de Localizar entidades; Executar consultas usando JPQL ou mesmo SQL nativo; Persistir entidades; Atualizar entidades no banco de dados; Remover entidades do banco de dado
+  
+#### Exemplos
+
+Usando como exemplo o método para buscar registros do banco
+Foi criado um  service e um controller,`PersonAudService` e `PersonRevisionController`onde foi implementado um método que vai recuperar todas as REVISIONS da entidade Person.
+
+Para recuperar é  utilizado a classe `AuditReader` criada a partir da classe `AuditReaderFactory`. Com a instancia dela, chamo o método 
+`createQuery()`e falo que quero as revisions da entidade `Person`com o método `forRevisionsOfEntity`.
+
+```
+@Service
+public class PersonAudService {
+
+    @Autowired
+    private EntityManager entityManager;
+
+    public List getPersonRevisionsById(Long id) {
+        AuditQuery auditQuery = AuditReaderFactory.get(entityManager).createQuery().forRevisionsOfEntity(Person.class, true, true);
+        auditQuery.add(AuditEntity.id().eq(id));
+        return auditQuery.getResultList();
+    }
+```
+
+```
+@RestController
+@RequestMapping("/api/people/")
+public class PersonRevisionController {
+
+    @Autowired
+    private PersonAudService personAudService;
+
+    @GetMapping("/history/{id}")
+    public List getPersonRevisionById(@PathVariable("id") Long id) {
+        return personAudService.getPersonRevisionsById(id);
+    }
+ ```
