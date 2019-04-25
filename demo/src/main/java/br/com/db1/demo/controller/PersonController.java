@@ -2,7 +2,6 @@ package br.com.db1.demo.controller;
 
 import br.com.db1.demo.dto.PersonDTO;
 import br.com.db1.demo.model.Person;
-import br.com.db1.demo.repository.PersonRepository;
 import br.com.db1.demo.service.PersonPersistService;
 import br.com.db1.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +11,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
+
+// retirar history
 
 @RestController
-@RequestMapping("/api/people/history")
+@RequestMapping("/api/people")
 public class PersonController {
 
     @Autowired
@@ -24,8 +24,9 @@ public class PersonController {
     @Autowired
     private PersonPersistService personPersistService;
 
+    // get all = /
 
-    @GetMapping("/record")
+    @GetMapping
     public List<Person> getPeople() {
         return personService.getPeople();
     }
@@ -36,23 +37,22 @@ public class PersonController {
     }
 
 
-    @PostMapping("/person")
+    @PostMapping
     public ResponseEntity<Object> createPerson(@RequestBody PersonDTO body) {
         Person savedPerson = personPersistService.insertPerson(body);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedPerson.getId()).toUri();
 
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(savedPerson);
     }
 
 
-    @PutMapping("/person/{id}")
-    public ResponseEntity<Object> updateStudent(@RequestBody PersonDTO body, @PathVariable long id) {
-        personPersistService.updatePerson(body, id);
-        return ResponseEntity.noContent().build();
+    @PutMapping("{id}")
+    public ResponseEntity updatePerson(@RequestBody PersonDTO body, @PathVariable long id) {
+        Person person = personPersistService.updatePerson(body, id);
+        return ResponseEntity.ok(person);
     }
-
 
     @DeleteMapping("/person/{id}")
     public void deletePerson(@PathVariable long id) {

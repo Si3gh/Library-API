@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "548d34c8-235b-49f4-8596-8fc5cc376fbc",
+		"name": "Teste-Auditoria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastra pessoa no banco de dados.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Homi\",\n\t\"surname\":\"Bravo\",\n\t\"comments\":\"INSERT-POST\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/people/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"people",
+						""
+					]
+				},
+				"description": "Cadastra pessoa no banco de dados.\n{\n\t\"name\":\"Bruno\",\n\t\"surname\":\"Broietti\",\n\t\"comments\":\"INSERT-POST\"\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Mostra todas as pessoas cadastradas no banco.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/people/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"people",
+						""
+					]
+				},
+				"description": "Mostra todas as pessoas cadastradas no banco."
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza os dados cadastrados no banco.",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Joao\",\n        \"surname\": \"Broietti Pissolito\",\n        \"comments\": \"PUT -UPDATE\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/people/21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"people",
+						"21"
+					]
+				},
+				"description": "Atualiza os dados cadastrados no banco.\n{\n        \"name\": \"Joao\",\n        \"surname\": \"Pissolito\",\n        \"comments\": \"PUT -UPDATE\"\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Mostra dados de cadastro específico.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/people/29",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"people",
+						"29"
+					]
+				},
+				"description": "http://localhost:8080/api/people/{ID}"
+			},
+			"response": []
+		},
+		{
+			"name": "Mostra histórico de alterações feitas em um cadastro especifico.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/people/history/29",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"people",
+						"history",
+						"29"
+					]
+				},
+				"description": "http://localhost:8080/api/people/history/{ID}"
+			},
+			"response": []
+		},
+		{
+			"name": "Mostra alterações feitas em uma REVISION especifica",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/people/history/revision/23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"people",
+						"history",
+						"revision",
+						"23"
+					]
+				},
+				"description": "http://localhost:8080/api/people/revision/{REV}"
+			},
+			"response": []
+		},
+		{
+			"name": "Deleta cadastro do banco",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/people/history/person/17",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"people",
+						"history",
+						"person",
+						"17"
+					]
+				},
+				"description": "http://localhost:8080/api/people/history/person/{ID}"
+			},
+			"response": []
+		}
+	]
+}
