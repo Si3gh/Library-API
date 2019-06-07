@@ -12,8 +12,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-// retirar history
-
 @RestController
 @RequestMapping("/api/people")
 public class PersonController {
@@ -53,6 +51,7 @@ public class PersonController {
         Person person = personPersistService.updatePerson(body, id);
         return ResponseEntity.ok(person);
     }
+
 
     @DeleteMapping("/person/{id}")
     public void deletePerson(@PathVariable long id) {
