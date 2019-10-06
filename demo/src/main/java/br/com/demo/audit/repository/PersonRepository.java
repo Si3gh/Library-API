@@ -1,6 +1,6 @@
-package br.com.db1.demo.repository;
+package br.com.demo.audit.repository;
 
-import br.com.db1.demo.model.Person;
+import br.com.demo.audit.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

@@ -1,7 +1,7 @@
-package br.com.db1.demo.service;
+package br.com.demo.audit.service;
 
-import br.com.db1.demo.model.Person;
-import br.com.db1.demo.repository.PersonRepository;
+import br.com.demo.audit.model.Person;
+import br.com.demo.audit.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

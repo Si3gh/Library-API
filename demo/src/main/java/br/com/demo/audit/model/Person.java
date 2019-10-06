@@ -1,4 +1,4 @@
-package br.com.db1.demo.model;
+package br.com.demo.audit.model;
 
 import org.hibernate.envers.Audited;
 

@@ -1,9 +1,9 @@
-package br.com.db1.demo.controller;
+package br.com.demo.audit.controller;
 
-import br.com.db1.demo.dto.PersonDTO;
-import br.com.db1.demo.model.Person;
-import br.com.db1.demo.service.PersonPersistService;
-import br.com.db1.demo.service.PersonService;
+import br.com.demo.audit.dto.PersonDTO;
+import br.com.demo.audit.model.Person;
+import br.com.demo.audit.service.PersonPersistService;
+import br.com.demo.audit.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +21,6 @@ public class PersonController {
 
     @Autowired
     private PersonPersistService personPersistService;
-
-    // get all = /
 
     @GetMapping
     public List<Person> getPeople() {

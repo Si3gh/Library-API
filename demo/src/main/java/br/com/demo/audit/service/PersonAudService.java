@@ -1,6 +1,6 @@
-package br.com.db1.demo.service;
+package br.com.demo.audit.service;
 
-import br.com.db1.demo.model.Person;
+import br.com.demo.audit.model.Person;
 import org.hibernate.envers.AuditReaderFactory;
 import org.hibernate.envers.query.AuditEntity;
 import org.hibernate.envers.query.AuditQuery;

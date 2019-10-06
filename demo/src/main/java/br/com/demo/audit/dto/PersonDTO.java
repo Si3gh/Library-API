@@ -1,4 +1,4 @@
-package br.com.db1.demo.dto;
+package br.com.demo.audit.dto;
 
 public class PersonDTO {
 

@@ -1,6 +1,6 @@
-package br.com.db1.demo.controller;
+package br.com.demo.audit.controller;
 
-import br.com.db1.demo.service.PersonAudService;
+import br.com.demo.audit.service.PersonAudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
